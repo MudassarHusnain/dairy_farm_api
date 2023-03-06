@@ -24,7 +24,7 @@ class AnimalsController <ApplicationController
   end
   def create
     # debugger
-    @animal=Animal.new(picture:params[:picture],date_of_birth:params[:date_of_birth],status:params[:status])
+    @animal=Animal.new(picture:params[:picture],date_of_birth:params[:date_of_birth],status:params[:status],description:params[:description])
     if @animal.save
       render json: {
         status:"ok",message:"Animal is created successfully"
@@ -51,6 +51,6 @@ class AnimalsController <ApplicationController
   end
   private
   def animal_params
-    params.require(:animal).permit(:picture,:date_of_birth,:status)
+    params.require(:animal).permit(:picture,:date_of_birth,:status,:description)
   end
 end
